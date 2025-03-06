@@ -10,17 +10,23 @@ const useMemoDemo = () => {
 
     // Fetch movies using the API when the component mounts
     useEffect(() => {
-        getMovies().then((data) => setMoviesList(data))
+        getMovies()
+            .then((data) => setMoviesList(data))
+            .catch((error) => console.error("Failed to fetch movies:", error))
     }, [])
 
+    let debounceTimer: NodeJS.Timeout;
     // set filterInput when user types into the input field
     const onInput = (event: ChangeEvent<HTMLInputElement>) => {
-        setFilterInput(event?.target?.value.toLowerCase().trim());
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            setFilterInput(event?.target?.value.toLowerCase().trim());
+        }, 300); // Adjust debounce delay as needed
     }
     // use Memo caches the filteredMovies result and recalculates it only when moviesList or filterInput changes
     const filteredMovies = useMemo(() => {
         return moviesList.filter((movie) => {
-            return movie.name.toLowerCase().trim().includes(filterInput)
+            return movie.name?.toLowerCase().trim().includes(filterInput)
         })
     }, [moviesList, filterInput])
 
