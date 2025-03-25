@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiToken = "[token]";
+const apiToken = "JIUiYWnEyUVaUs2mmXAv";
 
 const api = axios.create({
   baseURL: "https://the-one-api.dev",
@@ -24,7 +24,7 @@ export const getMovies = async (): Promise<MovieData[]> =>
   api
     .get("/v2/movie", {
       params: {
-        limit: 5,
+        limit: 50,
       },
     })
     .then((res: { data: { docs: any; }; }) => {
