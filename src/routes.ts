@@ -10,9 +10,14 @@ const routes = [
     component: "UseMemoDemo",
   },
   {
-    title: "memo",
+    title: "Memo",
     path: "/memo",
     component: "MemoDemo",
+  },
+  {
+    title: "Context",
+    path: "/context",
+    component: "Context",
   },
 ];
 

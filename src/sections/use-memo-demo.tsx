@@ -31,7 +31,7 @@ const useMemoDemo = () => {
     }, [moviesList, filterInput])
 
     return (
-        <div className="container">
+        <div>
             <section className="header">
                 <h1>Use Memo Example </h1>
             </section>

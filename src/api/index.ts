@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiToken = "JIUiYWnEyUVaUs2mmXAv";
+const apiToken = process.env.REACT_APP_API_TOKEN;
 
 const api = axios.create({
   baseURL: "https://the-one-api.dev",
